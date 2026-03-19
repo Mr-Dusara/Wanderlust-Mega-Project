@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the Instance ID and path to the .env file
-INSTANCE_ID="i-0ee177c8f3cdd7103"
+INSTANCE_ID="i-0b07a3d06b2736fb4"
 
 # Retrieve the public IP address of the specified EC2 instance
 ipv4_address=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
@@ -25,7 +25,7 @@ else
                 echo -e "${GREEN}${file_to_find}${NC} found.."
                 echo -e "${YELLOW}Configuring env variables in ${NC} ${file_to_find}"
                 sleep 7s;
-                sed -i -e "s|VITE_API_PATH.*|VITE_API_PATH=\"http://${ipv4_address}:31100\"|g" ${file_to_find}
+                sed -i -e "s|VITE_API_PATH.*|VITE_API_PATH=\"http://${ipv4_address}:8080\"|g" ${file_to_find}
                 echo -e "${GREEN}env variables configured..${NC}"
         else
                 echo -e "${RED}ERROR : File not found..${NC}"

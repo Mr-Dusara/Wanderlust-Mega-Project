@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - wanderlust-network
+
+  backend:
+    build: backend
+    container_name: backend
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./backend/.env.docker
+    depends_on:
+      - mongodb
+    networks:
+      - wanderlust-network
+
+  frontend:
+    build: frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "80:80"
+    env_file:
+      - ./frontend/.env.docker
+    depends_on:
+      - backend
+    networks:
+      - wanderlust-network
+
+volumes:
+  mongo-data:
+
+networks:
+  wanderlust-network:
+    external: true
