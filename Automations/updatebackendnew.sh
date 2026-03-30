@@ -18,7 +18,7 @@ NC='\033[0m'
 
 echo -e " ${GREEN}System Public Ipv4 address ${NC} : ${ipv4_address}"
 
-if [[ "${alreadyUpdate}" == "FRONTEND_URL=\"http://${ipv4_address}:5173\"" ]]
+if [[ "${alreadyUpdate}" == "FRONTEND_URL=\"http://${ipv4_address}:31000\"" ]]
 then
         echo -e "${YELLOW}${file_to_find} file is already updated to the current host's Ipv4 ${NC}"
 else
@@ -27,7 +27,7 @@ else
                 echo -e "${GREEN}${file_to_find}${NC} found.."
                 echo -e "${YELLOW}Configuring env variables in ${NC} ${file_to_find}"
                 sleep 7s;
-                sed -i -e "s|FRONTEND_URL.*|FRONTEND_URL=\"http://${ipv4_address}:5173\"|g" ${file_to_find}
+                sed -i -e "s|FRONTEND_URL.*|FRONTEND_URL=\"http://${ipv4_address}:31000\"|g" ${file_to_find}
                 echo -e "${GREEN}env variables configured..${NC}"
         else
                 echo -e "${RED}ERROR : File not found..${NC}"
