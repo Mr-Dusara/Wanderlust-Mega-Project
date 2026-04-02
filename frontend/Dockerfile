@@ -44,14 +44,14 @@ RUN npm install
 
 COPY . .
 
+RUN mv .env.docker .env
+
 RUN npm run build   # 🔥 IMPORTANT
 
 # -------- Stage 2: Serve --------
 FROM nginx:alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
-
-COPY .env.docker .env.local
 
 EXPOSE 80
 
