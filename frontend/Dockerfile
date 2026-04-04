@@ -44,6 +44,8 @@ RUN npm install
 
 COPY . .
 
+RUN cp .env.docker .env
+
 RUN npm run build   # 🔥 IMPORTANT
 
 # -------- Stage 2: Serve --------
