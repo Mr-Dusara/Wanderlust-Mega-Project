@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: dooms002/wanderlust-frontend:52
+        image: dooms002/wanderlust-frontend:53
         ports:
         - containerPort: 80
 

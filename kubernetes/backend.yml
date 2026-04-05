@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: dooms002/wanderlust-backend:52
+        image: dooms002/wanderlust-backend:53
         ports:
         - containerPort: 8080
         
